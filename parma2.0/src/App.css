@@ -1,0 +1,272 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --nav-bg:  #0f403f;
+  --accent:  #20214f;
+  --accent-light: #145b56;
+  --text-light: #ffffff;
+  --text-dark: #111111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+body {
+  background: #fff;
+  color: #111;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  padding: 22px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* CART ICON */
+.cart-icon {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  position: relative;
+}
+
+.badge {
+  background: #0A6A56;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  top: -6px;
+  right: -10px;
+}
+
+/* PRODUCT GRID */
+.products {
+  max-width: 1250px;
+  margin: 45px auto 100px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 38px;
+}
+
+.product {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.product h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.product button {
+  background: #0A6A56;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* SHOPIFY CART DRAWER */
+.side-cart {
+  position: fixed;
+  top: 0;
+  right: -360px;
+  width: 320px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.25);
+  padding: 18px;
+  transition: 0.35s ease;
+  z-index: 999;
+}
+
+.side-cart.open {
+  right: 0;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  float: right;
+}
+
+.cart-row {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.cart-row img {
+  width: 54px;
+  height: 54px;
+  border-radius: 6px;
+  margin-right: 12px;
+}
+
+.controls button {
+  width: 22px;
+  height: 22px;
+  background: #252440;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-link {
+  display: block;
+  margin-top: 14px;
+  background: #0A6A56;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 22px 48px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  transition: background 0.35s ease;
+}
+
+.navbar.scrolled {
+  background: #000;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 22px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--nav-bg);
+  backdrop-filter: blur(6px);
+  transition: transform 0.35s ease, background 0.35s ease;
+}
+
+/* NAVBAR VISIBLE */
+.nav-visible {
+  transform: translateY(0);
+}
+
+/* NAVBAR OCULTA */
+.nav-hidden {
+  transform: translateY(-120%);
+}
+
+/* opcional: cuando baja mucho el usuario, navbar se ve más sólido */
+.navbar.scrolled {
+  background: rgba(0,0,0,0.85);
+}
+/* ======================= */
+/*     NAV MENU ESTILO     */
+/* ======================= */
+
+.top-menu {
+  display: flex;
+  gap: 32px; 
+  align-items: center;
+  margin-left: auto;        /* Empuja el menú hacia el centro-natural */
+  margin-right: 620px;       /* Ajusta separación del carrito */
+}
+
+.top-menu a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding-bottom: 4px;      /* Espacio para la animación */
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+/* Cuando NO está sobre el Hero */
+.navbar.scrolled .top-menu a {
+  color: white; /* o #111 si quieres modo negro */
+}
+
+/* —— Animación línea y heartbeat —— */
+
+.top-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #A6A6A6;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.top-menu a:hover::after {
+  width: 100%;
+  animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+}
+
+@keyframes heartbeat116 {
+  0%, 100% {
+    width: 100%;
+  }
+  50% {
+    width: 60%;
+  }
+}
+
+/* Suavizado del hover del texto */
+.top-menu a:hover {
+  opacity: 0.8;
+}
